@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar y Restaurante Donde Nacho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background: url('imagen1.jpg') no-repeat center center/cover;
+            height: 250px;
+        }
+        img.logo {
+            width: 150px;
+            margin-top: -75px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        .container {
+            padding: 20px;
+            background: white;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, button {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .facebook-btn {
+            background-color: #3b5998;
+        }
+        .call-btn {
+            background-color: #007bff;
+        }
+        .menu-btn {
+            background-color: #ff9800;
+        }
+        video {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <img src="imagen2.jpg" alt="Logo" class="logo">
+    <div class="container">
+        <h2>Haz tu pedido</h2>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+        <input type="text" id="direccion" placeholder="Tu dirección">
+        <textarea id="pedido" placeholder="Detalles de tu pedido"></textarea>
+        <button onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
+        <button class="facebook-btn" onclick="seguirFacebook()">Síguenos en Facebook</button>
+        <button class="menu-btn" onclick="verMenu()">Menú Virtual</button>
+        <button class="call-btn" onclick="llamar()">Llamar al Restaurante</button>
+    </div>
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+    <script>
+        function enviarPedido() {
+            let nombre = document.getElementById('nombre').value;
+            let direccion = document.getElementById('direccion').value;
+            let pedido = document.getElementById('pedido').value;
+            let mensaje = `Hola, soy ${nombre}. Mi dirección es ${direccion}. Quiero pedir: ${pedido}`;
+            let url = `https://wa.me/50584751878?text=${encodeURIComponent(mensaje)}`;
+            window.location.href = url;
+        }
+        function seguirFacebook() {
+            window.open('https://www.facebook.com/share/1DHqK3jtA3/', '_blank');
+        }
+        function verMenu() {
+            window.open('https://your-menu-link.com', '_blank');
+        }
+        function llamar() {
+            window.location.href = 'tel:+50584751878';
+        }
+    </script>
+</body>
+</html>
