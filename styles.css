@@ -1,0 +1,7 @@
+input, select {
+    background-color: white;
+    color: black; /* Puedes cambiar el color del texto si lo deseas */
+    border: 1px solid #ccc; /* Borde opcional */
+    padding: 5px;
+    border-radius: 5px; /* Bordes redondeados opcionales */
+}

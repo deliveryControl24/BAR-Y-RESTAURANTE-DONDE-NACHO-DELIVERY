@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: #121212;
-            color: #ffffff;
+            color: white;
         }
         header {
             background: url('imagen1.jpg') no-repeat center center/cover;
@@ -31,13 +32,13 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
         }
-        input, textarea, button {
+        input, textarea, select, button {
             display: block;
             width: 90%;
             margin: 10px auto;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #444;
+            border: 1px solid #ccc;
             background: #333;
             color: white;
         }
@@ -53,16 +54,15 @@
         .call-btn {
             background-color: #007bff;
         }
-        video {
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 10px;
+        .whatsapp-btn {
+            background-color: #25d366;
         }
     </style>
 </head>
 <body>
     <header></header>
     <img src="imagen2.jpg" alt="Logo" class="logo">
+    
     <div class="container">
         <h2>Haz tu pedido</h2>
         <input type="text" id="nombre" placeholder="Tu nombre">
@@ -72,10 +72,22 @@
         <button class="facebook-btn" onclick="seguirFacebook()">Síguenos en Facebook</button>
         <button class="call-btn" onclick="llamar()">Llamar al Restaurante</button>
     </div>
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-    </video>
+
+    <div class="container">
+        <h2>Agenda tu evento</h2>
+        <input type="text" id="nombreEvento" placeholder="Tu nombre">
+        <select id="evento">
+            <option value="Cumpleaños">Cumpleaños</option>
+            <option value="Reunión empresarial">Reunión empresarial</option>
+            <option value="Boda">Boda</option>
+            <option value="Aniversario">Aniversario</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <input type="date" id="fecha">
+        <input type="time" id="hora">
+        <button class="whatsapp-btn" onclick="agendarEvento()">Apartar por WhatsApp</button>
+    </div>
+
     <script>
         function enviarPedido() {
             let nombre = document.getElementById('nombre').value;
@@ -85,11 +97,23 @@
             let url = `https://wa.me/50584751878?text=${encodeURIComponent(mensaje)}`;
             window.location.href = url;
         }
+
         function seguirFacebook() {
             window.open('https://www.facebook.com/share/1DHqK3jtA3/', '_blank');
         }
+
         function llamar() {
             window.location.href = 'tel:+50584751878';
+        }
+
+        function agendarEvento() {
+            let nombreEvento = document.getElementById('nombreEvento').value;
+            let evento = document.getElementById('evento').value;
+            let fecha = document.getElementById('fecha').value;
+            let hora = document.getElementById('hora').value;
+            let mensaje = `Hola, mi nombre es ${nombreEvento}. Quiero apartar un evento de tipo: ${evento} para la fecha: ${fecha} a las ${hora}.`;
+            let url = `https://wa.me/50584751878?text=${encodeURIComponent(mensaje)}`;
+            window.location.href = url;
         }
     </script>
 </body>
