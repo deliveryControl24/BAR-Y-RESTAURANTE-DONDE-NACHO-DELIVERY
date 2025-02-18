@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +51,7 @@
         .call-btn {
             background-color: #007bff;
         }
-        .menu-container {
+        .event-container {
             padding: 20px;
             background: white;
             margin: 20px auto;
@@ -60,17 +61,17 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: left;
         }
-        .menu-container h3 {
+        .event-container h3 {
             background-color: #ff9800;
             color: white;
             padding: 10px;
             border-radius: 5px;
         }
-        .menu-container ul {
+        .event-container ul {
             list-style: none;
             padding: 0;
         }
-        .menu-container li {
+        .event-container li {
             padding: 5px 0;
             border-bottom: 1px solid #ddd;
         }
@@ -78,6 +79,12 @@
             width: 100%;
             margin-top: 20px;
             border-radius: 10px;
+        }
+        .youtube-audio {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
         }
     </style>
 </head>
@@ -93,65 +100,22 @@
         <button class="facebook-btn" onclick="seguirFacebook()">Síguenos en Facebook</button>
         <button class="call-btn" onclick="llamar()">Llamar al Restaurante</button>
     </div>
-    <div class="menu-container">
-        <h2>Menú Completo</h2>
-        <h3>Asados</h3>
-        <ul>
-            <li>Costilla de cerdo: C$300</li>
-            <li>Pollo asado: C$220</li>
-            <li>Cerdo asado: C$220</li>
-            <li>Corazón asado: C$220</li>
-            <li>Gonces asados: C$450</li>
-            <li>Lomo de costilla (asado): C$470</li>
-        </ul>
-        <h3>Mariscos</h3>
-        <ul>
-            <li>Camarones a la plancha: C$370</li>
-            <li>Camarones empanizados: C$370</li>
-            <li>Camarones al ajillo: C$370</li>
-            <li>Corvina a la plancha: C$370</li>
-        </ul>
-        <h3>Extras</h3>
-        <ul>
-            <li>Arroz o gallo pinto: C$50</li>
-            <li>Papas: C$200</li>
-            <li>Ensalada: C$40</li>
-            <li>Tostones: C$50</li>
-            <li>Jalapeño: C$40</li>
-            <li>Queso: C$50</li>
-        </ul>
-        <h3>Cervezas y Licores</h3>
-        <ul>
-            <li>Toña</li>
-            <li>Toña Light</li>
-            <li>Victoria Clásica</li>
-            <li>Victoria Frost</li>
-            <li>Sol</li>
-            <li>Heineken</li>
-            <li>Bamboo</li>
-            <li>Adán y Eva</li>
-            <li>Bliss</li>
-            <li>Hard Seltzer Spark</li>
-            <li>Smirnoff</li>
-            <li>1/2 botella de ron nacional Flor de Caña</li>
-            <li>1/4 botella de ron nacional Flor de Caña</li>
-            <li>Tequila José Cuervo Especial</li>
-            <li>Whisky Johnnie Walker Red</li>
-            <li>Whisky Johnnie Walker Black</li>
-        </ul>
-        <h3>Bebidas Sin Alcohol</h3>
-        <ul>
-            <li>Limonada: C$40</li>
-            <li>Gaseosa: C$30</li>
-            <li>Té de limón: C$40</li>
-            <li>Jugo de naranja: C$40</li>
-            <li>Agua embotellada: C$40</li>
-        </ul>
+    <div class="event-container">
+        <h2>Formulario para Eventos</h2>
+        <input type="text" id="nombreEvento" placeholder="Nombre del evento">
+        <input type="date" id="fechaEvento" placeholder="Fecha del evento">
+        <input type="number" id="invitados" placeholder="Número de invitados">
+        <textarea id="detallesEvento" placeholder="Detalles del evento"></textarea>
+        <button onclick="enviarFormularioEvento()">Enviar formulario de evento</button>
     </div>
     <video controls>
         <source src="video.mp4" type="video/mp4">
         Tu navegador no soporta la reproducción de video.
     </video>
+
+    <!-- YouTube Audio Background -->
+    <iframe class="youtube-audio" width="560" height="315" src="https://www.youtube.com/embed/_kDdKzJ6gLg?autoplay=1&mute=0&loop=1&playlist=_kDdKzJ6gLg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
     <script>
         function enviarPedido() {
             let nombre = document.getElementById('nombre').value;
@@ -166,6 +130,15 @@
         }
         function llamar() {
             window.location.href = 'tel:+50584751878';
+        }
+        function enviarFormularioEvento() {
+            let nombreEvento = document.getElementById('nombreEvento').value;
+            let fechaEvento = document.getElementById('fechaEvento').value;
+            let invitados = document.getElementById('invitados').value;
+            let detallesEvento = document.getElementById('detallesEvento').value;
+            let mensaje = `Quiero organizar un evento:\nNombre: ${nombreEvento}\nFecha: ${fechaEvento}\nInvitados: ${invitados}\nDetalles: ${detallesEvento}`;
+            let url = `https://wa.me/50584751878?text=${encodeURIComponent(mensaje)}`;
+            window.location.href = url;
         }
     </script>
 </body>
